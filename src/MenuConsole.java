@@ -15,12 +15,15 @@ public class MenuConsole {
         System.out.print("Phone: ");
         String phone = scanner.nextLine();
         store = new Store(name, phone, city);
+
         System.out.println("Store created successfully!!\n");
         System.out.println(store);
         showMenu();
     }
 
     private void showMenu() {
-        
+        while (true) {
+            
+        }
     }
 }

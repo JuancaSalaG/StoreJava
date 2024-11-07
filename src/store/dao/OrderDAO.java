@@ -1,5 +1,8 @@
 package store.dao;
 
-public class OrderDAO {
+import java.util.HashMap;
+import store.models.Order;
 
+public class OrderDAO {
+    HashMap<Integer, Order> orders = new HashMap<Integer, Order>();
 }

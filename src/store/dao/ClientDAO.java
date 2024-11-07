@@ -1,5 +1,8 @@
 package store.dao;
 
-public class ClientDAO {
+import java.util.ArrayList;
+import store.models.*;
 
+public class ClientDAO {
+    ArrayList<Client> clients = new ArrayList<Client>();
 }

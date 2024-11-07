@@ -1,5 +1,9 @@
 package store.dao;
 
-public class ProductDAO {
+import java.util.ArrayList;
+import store.models.ProductInventory;
+
+public class ProductDAO {    
+    private ArrayList<ProductInventory> products = new ArrayList<ProductInventory>();
     
 }
