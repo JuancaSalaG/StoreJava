@@ -12,4 +12,9 @@ public class Store extends Entity {
     public String toString() {
         return "Information: " + super.toString() + " City: " + city;
     }
+
+    @Override
+    public String getName() {
+        return "Store ➡️ " + super.getName();
+    }
 }

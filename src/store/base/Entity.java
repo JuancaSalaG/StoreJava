@@ -15,4 +15,8 @@ public abstract class Entity {
     public String toString() {
         return "\nType: " + type + "\nName: " + name + "\nPhone: " + phone;
     }
+
+    public String getName() {
+        return name;
+    }
 }

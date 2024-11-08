@@ -10,17 +10,19 @@ public class Order {
     private int customerId;
     private String clientAddress;
     private ArrayList<ListItem> listItems;
+    private double totalOrder;
 
-    public Order(int id, Date createdAt, int customerId, String clientAddress, ArrayList<ListItem> products, int quantity) {
+    public Order(int id, Date createdAt, int customerId, String clientAddress, ArrayList<ListItem> products, int quantity, double totalOrder) {
         this.id = id;
         this.createdAt = createdAt;
         this.status = StatusOrder.PENDING;
         this.customerId = customerId;
         this.clientAddress = clientAddress;
         this.listItems = products;
+        this.totalOrder = totalOrder;
     }
 
     public String toString() {
-        return "Order: \nId: " + id + " Created at: " + createdAt + " Status: " + status + " Customer id: " + customerId + " Client address: " + clientAddress + " List items: " + listItems + "\n";
+        return "Order: \nId: " + id + " Created at: " + createdAt + " Status: " + status + " Customer id: " + customerId + " Client address: " + clientAddress + " List items: " + listItems + " Total Order: " + totalOrder + "\n";
     }
 }

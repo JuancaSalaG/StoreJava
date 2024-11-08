@@ -14,6 +14,18 @@ public abstract class Category {
     }
 
     public String toString() {
-        return "Category:  \nName: " + name + "Description: " + description + "\n";
+        return "Category:  \nName: " + name + " Description: " + description + "\n";
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
