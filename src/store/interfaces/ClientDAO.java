@@ -9,5 +9,7 @@ public interface ClientDAO {
     public void removeClient(int id);
     public void updateClient(int id, Client client);
     public Client getClient(int id);
-    public ArrayList<Client> searchClients(Optional<String> name, Optional<String> phone);
+    public ArrayList<Client> searchClients(String name);
+    public ArrayList<Client> getAllClients();
+    public int getLastClientId();
 }

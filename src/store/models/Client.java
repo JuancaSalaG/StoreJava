@@ -16,7 +16,30 @@ public class Client extends Entity {
         this.orders = 0;
     }
 
+    public Client(String name, String adress, int id) {
+        super(TypeEntity.PERSON, name);
+        this.id = id;
+        this.address = adress;
+        this.orders = 0;
+    }
+
     public String toString() {
-        return "Client: \n" + super.toString() + "Id: " + id + " Address: " + address + " Orders: " + orders + " Last order date: " + lastOrderDate + "\n";
+        return "Client: " + super.toString() + "\nId: " + id + " Address: " + address + " Orders: " + orders + " Last order date: " + lastOrderDate + "\n";
+    }
+
+    public void setName(String name) {
+        super.setName(name);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void serPhone(String phone) {
+        super.setPhone(phone);
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

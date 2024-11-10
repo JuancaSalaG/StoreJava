@@ -1,20 +1,19 @@
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.function.Function;
 import java.util.function.Supplier;
-
+import java.lang.Runnable;
 import store.models.Store;
 import store.utils.*;
 
 public class MenuConsole {
     private static final Scanner scanner = new Scanner(System.in);
     private Store store;
-    private HashMap <Integer, Runnable> menuOptions = new HashMap<>();
+    private HashMap<Integer, Runnable> menuOptions = new HashMap<>();
 
     public MenuConsole() {
         menuOptions.put(1, this::inventoryMenu);
-        /* menuOptions.put(2, this::goToSales);
-        menuOptions.put(3, this::goToCustomers); */
+        menuOptions.put(2, this::salesMenu);
+        menuOptions.put(3, this::customersMenu);
         menuOptions.put(4, () -> {
             System.out.println("Thanks for using the system, see you soon!!");
             System.exit(0);
@@ -94,6 +93,67 @@ public class MenuConsole {
             System.out.println("Invalid inventory option, please try again.");
             scanner.nextLine();
             inventoryMenu();
+        }
+    }
+
+    private void customersMenu() {
+        HashMap <String, Supplier<String>> clientOptions = new HashMap<>();
+        clientOptions.put("create", ClientUtils::processCreate);
+        clientOptions.put("update", ClientUtils::processUpdate);
+        clientOptions.put("delete", ClientUtils::processDelete);
+        clientOptions.put("get", ClientUtils::processGet);
+        clientOptions.put("search", ClientUtils::processSearch);
+        
+        System.out.println("\n===========================");
+        System.out.println("Client menu 👥");
+        System.out.println("===========================");
+        System.out.println("Type the action you want to do.");
+        System.out.println("A. Create a client: (Opt → Create)");
+        System.out.println("B. Update a client: (Opt → Update)");
+        System.out.println("C. Delete a client: (Opt → Delete)");
+        System.out.println("D. Get a client: (Opt → Get)");
+        System.out.println("E. Search clients: (Opt → Search)");
+        System.out.println("F. Back to main menu: (Opt → Back)\n");
+        try {
+            String option = scanner.next().toLowerCase();
+            if (!clientOptions.containsKey(option) && !option.equals("back")) {
+                throw new Exception();
+            }
+            if (option.equals("back")) {
+                showMenu();                
+            }
+            String result = clientOptions.get(option).get();
+            System.out.println(result);
+            customersMenu();            
+        } catch (Exception e) {
+            System.out.println("Invalid client option, please try again.");
+            scanner.nextLine();
+            customersMenu();
+        }
+    }
+
+    private void salesMenu() {
+        System.out.println("\n===========================");
+        System.out.println("Sales menu 💰");
+        System.out.println("===========================");
+        System.out.println("Type the action you want to do.");
+        System.out.println("A. Create a sale: (Opt → Create)");
+        System.out.println("B. Update a sale: (Opt → Update)");
+        System.out.println("C. Delete a sale: (Opt → Delete)");
+        System.out.println("D. Get a sale: (Opt → Get)");
+        System.out.println("E. Search sales: (Opt → Search)");
+        System.out.println("F. Back to main menu: (Opt → Back)\n");
+        try {
+            String option = scanner.next().toLowerCase();
+            
+            if (option.equals("back")) {
+                showMenu();                
+            }
+            salesMenu();
+        } catch (Exception e) {
+            System.out.println("Invalid sales option, please try again.");
+            scanner.nextLine();
+            salesMenu();
         }
     }
 }

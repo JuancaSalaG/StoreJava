@@ -12,11 +12,24 @@ public abstract class Entity {
         this.phone = phone;
     }
 
+    public Entity(TypeEntity type, String name) {
+        this.type = type;
+        this.name = name;
+    }
+
     public String toString() {
-        return "\nType: " + type + "\nName: " + name + "\nPhone: " + phone;
+        return "\nType: " + type + " Name: " + name + " Phone: " + phone;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
