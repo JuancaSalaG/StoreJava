@@ -32,4 +32,8 @@ public abstract class Entity {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public String getPhone() {
+        return phone;
+    }
 }

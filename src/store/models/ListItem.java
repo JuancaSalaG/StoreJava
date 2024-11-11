@@ -18,4 +18,8 @@ public class ListItem {
     public String toString() {
         return String.format("Product: %s - %s Price: $%.2f Quantity: %d Total: $%.2f\n", productCode, productName, price, quantity, total);
     }
+
+    public double getTotal() {
+        return total;
+    }
 }

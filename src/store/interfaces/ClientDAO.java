@@ -12,4 +12,5 @@ public interface ClientDAO {
     public ArrayList<Client> searchClients(String name);
     public ArrayList<Client> getAllClients();
     public int getLastClientId();
+    public void addOrderToClient(int id);
 }

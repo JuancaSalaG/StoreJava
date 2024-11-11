@@ -1,7 +1,6 @@
 package store.interfaces;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 
 import store.models.ProductInventory;

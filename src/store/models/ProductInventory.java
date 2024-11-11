@@ -64,6 +64,14 @@ public class ProductInventory extends Category {
         return super.getName();
     }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
     public String toString() {
         return super.toString() + "Product: \nCode: " + code + " Name: " + name + " Price: " + price + " Stock: " + stock + " Expiration: " + expiration + "\n";
     }    

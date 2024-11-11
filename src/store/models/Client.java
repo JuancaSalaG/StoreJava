@@ -23,6 +23,14 @@ public class Client extends Entity {
         this.orders = 0;
     }
 
+    public Client(Client clientCopy) {
+        super(TypeEntity.PERSON, clientCopy.getName(), clientCopy.getPhone());
+        this.id = clientCopy.id;
+        this.address = clientCopy.address;
+        this.orders = clientCopy.orders;
+        this.lastOrderDate = clientCopy.lastOrderDate;
+    }
+
     public String toString() {
         return "Client: " + super.toString() + "\nId: " + id + " Address: " + address + " Orders: " + orders + " Last order date: " + lastOrderDate + "\n";
     }
@@ -35,11 +43,20 @@ public class Client extends Entity {
         return id;
     }
 
+    public String getPhone() {
+        return super.getPhone();
+    }
+
     public void serPhone(String phone) {
         super.setPhone(phone);
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setClientOrder() {
+        this.orders += 1;
+        this.lastOrderDate = new Date(System.currentTimeMillis());
     }
 }

@@ -1,5 +1,4 @@
 package store.services;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -8,8 +7,8 @@ import store.interfaces.ClientService;
 import store.models.Client;
 
 public class ClientServiceImpl implements ClientService {
-    private final ClientDAOImpl clientDAOImpl = new ClientDAOImpl();
-
+    private final ClientDAOImpl clientDAOImpl = ClientDAOImpl.getInstance();
+    
     @Override
     public String createClient(String name, Optional<String> phone, String address) {
         String clientPhone = phone.isPresent() ? phone.get() : "";

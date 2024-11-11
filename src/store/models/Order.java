@@ -12,14 +12,48 @@ public class Order {
     private ArrayList<ListItem> listItems;
     private double totalOrder;
 
-    public Order(int id, Date createdAt, int customerId, String clientAddress, ArrayList<ListItem> products, int quantity, double totalOrder) {
+    public Order(int id, int customerId, String clientAddress, ArrayList<ListItem> products, double totalOrder) {
         this.id = id;
-        this.createdAt = createdAt;
+        this.createdAt = new Date(System.currentTimeMillis());
         this.status = StatusOrder.PENDING;
         this.customerId = customerId;
         this.clientAddress = clientAddress;
-        this.listItems = products;
+        this.listItems = new ArrayList<>(products);
         this.totalOrder = totalOrder;
+    }
+
+    public Order(Order orderCopy) {
+        this.id = orderCopy.id;
+        this.createdAt = orderCopy.createdAt;
+        this.status = orderCopy.status;
+        this.customerId = orderCopy.customerId;
+        this.clientAddress = orderCopy.clientAddress;
+        this.listItems = new ArrayList<>(orderCopy.listItems);
+        this.totalOrder = orderCopy.totalOrder;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public StatusOrder getStatus() {
+        return status;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public double getTotalOrder() {
+        return totalOrder;
+    }
+
+    public void setStatus(StatusOrder status) {
+        this.status = status;
     }
 
     public String toString() {

@@ -133,25 +133,33 @@ public class MenuConsole {
     }
 
     private void salesMenu() {
+        HashMap <String, Supplier<String>> clientOptions = new HashMap<>();
+        clientOptions.put("create", SalesUtils::processCreate);
+        clientOptions.put("update", SalesUtils::processUpdate);
+        clientOptions.put("get", SalesUtils::processGet);
+        clientOptions.put("search", SalesUtils::processSearch);
+
         System.out.println("\n===========================");
-        System.out.println("Sales menu 💰");
+        System.out.println("Order and Sales's menu 💰");
         System.out.println("===========================");
         System.out.println("Type the action you want to do.");
         System.out.println("A. Create a sale: (Opt → Create)");
         System.out.println("B. Update a sale: (Opt → Update)");
-        System.out.println("C. Delete a sale: (Opt → Delete)");
-        System.out.println("D. Get a sale: (Opt → Get)");
-        System.out.println("E. Search sales: (Opt → Search)");
-        System.out.println("F. Back to main menu: (Opt → Back)\n");
+        System.out.println("C. Get a sale: (Opt → Get)");
+        System.out.println("D. Search sales: (Opt → Search)");
+        System.out.println("E. Back to main menu: (Opt → Back)\n");
         try {
             String option = scanner.next().toLowerCase();
             
             if (option.equals("back")) {
                 showMenu();                
             }
+            String result = clientOptions.get(option).get();
+            System.out.println(result);
             salesMenu();
         } catch (Exception e) {
-            System.out.println("Invalid sales option, please try again.");
+            System.out.println("Invalid sales option, please try again.\n" + e.getMessage());
+            e.printStackTrace();
             scanner.nextLine();
             salesMenu();
         }

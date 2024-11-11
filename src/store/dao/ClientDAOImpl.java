@@ -1,19 +1,26 @@
 package store.dao;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import store.interfaces.ClientDAO;
 import store.models.*;
 
 public class ClientDAOImpl implements ClientDAO {
     ArrayList<Client> clients = new ArrayList<Client>();
+    private static ClientDAOImpl uClientDAOImpl;
 
-    public ClientDAOImpl() {
+    private ClientDAOImpl() {
         clients.add(new Client("John", "123456789", "New York", 1));
         clients.add(new Client("Valentina", "123456589", "Texas", 2));
         clients.add(new Client("Andrés Raul", "123456766", "California", 3));
         clients.add(new Client("María Fernanda", "335456789", "Montana", 4));
+    }
+
+    public static ClientDAOImpl getInstance() {
+        if (uClientDAOImpl == null) {
+            uClientDAOImpl = new ClientDAOImpl();
+        }
+        return uClientDAOImpl;
     }
 
     @Override
@@ -64,5 +71,15 @@ public class ClientDAOImpl implements ClientDAO {
             }
         }
         return -1;
+    }
+
+    @Override
+    public void addOrderToClient(int id) {
+        int index = getClientIndex(id);
+        if (index != -1) {
+            Client client = new Client(clients.get(index));
+            client.setClientOrder();
+            clients.set(index, client);
+        }
     }
 }
